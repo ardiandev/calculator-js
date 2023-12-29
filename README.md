@@ -2,6 +2,10 @@
 
 This project is part of the fundamental of the Odin Project. This is a simple calculator web application built with HTML, CSS, and JavaScript. The calculator allows users to perform basic arithmetic operations such as addition, subtraction, multiplication, and division.
 
+## Demo
+
+The demo of this app can be found [here](https://ardiandev.github.io/calculator-js/).
+
 ## Features
 
 - **Responsive Design**: The calculator is designed to work well on various screen sizes, making it accessible on both desktop and mobile devices.
