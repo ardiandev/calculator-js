@@ -12,12 +12,13 @@ let currentValue = "";
 let previousValue = "";
 let operatorValue = "";
 let result = "";
+let numLimit = 10;
 
 number.forEach(num => num.addEventListener("click", handleNumber));
 
 function handleNumber(event) {
-  if (currentValue.length > 5) {
-    currentValue = currentValue.slice(0, 5);
+  if (currentValue.length > numLimit) {
+    currentValue = currentValue.slice(0, numLimit);
     currentDisplay.textContent = currentValue;
   }
   let inputNumber = event.target.textContent;
@@ -53,16 +54,14 @@ function handleOperator(event) {
     operatorValue = inputOperator;
     console.log("run", previousValue.length);
 
-    if (previousValue.length > 5) {
-      console.log("run");
-      // previousValue = previousValue.toString().slice(0, 5) + "...";
+    if (previousValue.length > numLimit) {
       previousDisplay.textContent = `${previousValue
         .toString()
-        .slice(0, 5)}... ${operatorValue}`;
+        .slice(0, numLimit)}... ${operatorValue}`;
     } else {
       previousDisplay.textContent = `${previousValue
         .toString()
-        .slice(0, 5)}... ${operatorValue}`;
+        .slice(0, numLimit)}... ${operatorValue}`;
     }
 
     currentDisplay.textContent = "0";
@@ -103,9 +102,9 @@ function operate() {
 equalBtn.addEventListener("click", () => {
   result = operate()
     .toString()
-    .slice(0, 5);
+    .slice(0, numLimit);
 
-  if (result.length === 5) {
+  if (result.length === numLimit) {
     result += "...";
   }
 
