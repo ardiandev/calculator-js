@@ -17,11 +17,20 @@ let numLimit = 10;
 number.forEach(num => num.addEventListener("click", handleNumber));
 
 function handleNumber(event) {
+  let inputNumber = event.target.textContent;
+
   if (currentValue.length > numLimit) {
     currentValue = currentValue.slice(0, numLimit);
     currentDisplay.textContent = currentValue;
   }
-  let inputNumber = event.target.textContent;
+
+  if (
+    (currentValue === "" && inputNumber === "0") ||
+    (currentValue === "" && inputNumber === "00")
+  ) {
+    return;
+  }
+
   currentValue += inputNumber;
   currentDisplay.textContent = currentValue;
 }
@@ -34,8 +43,12 @@ operator.forEach(op => {
 function handleOperator(event) {
   let inputOperator = event.target.textContent;
 
-  if (previousDisplay.textContent.includes("=") && currentValue !== "") {
-    previousDisplay.textContent = currentValue;
+  if (previousDisplay.textContent.includes("=")) {
+    previousValue = result;
+    operatorValue = inputOperator;
+    previousDisplay.textContent = `${previousValue} ${operatorValue}`;
+    currentValue = "";
+    currentDisplay.textContent = "0";
   }
 
   if (previousValue !== "") {
